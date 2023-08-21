@@ -4,43 +4,22 @@
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var numericalChar = "0123456789";
-// var specialChar = " !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var specialChar =  "!#$%&()*+,-./:;<=>?@[\]^_{|}";
+let password = "";
 
 // Generate password
 function generatePassword() {
-  let check = checkLength();
   if (checkLength()) {
-    prompt("Would you like numbers in your password?");
-  }
-  if (checkNumbers()) {
-    prompt("Would you like upper case letters?");
-  }
-}  
-  
-  // let numbers = prompt("would you like numbers?")
-function checkNumbers() {
-  const response = confirm("Would you like numbers?"); 
-    if (response) {
-      console.log("Your password will have numbers.");
-    } else {
-      console.log("Your password will not have numbers.")
-    }
-  }
-  
-
-  // let lowerCase = prompt("Would you like lower case letters?")
-function lowerCase() {
-  const response = confirm("Would you like lowercase numbers.")
+    let numbers = checkNumbers();
+    let uppers = checkUpper();
+    let lowers = checkLower();
+    let specials = checkSpecial();
+  }else {
+    return "Password must be between 8 and 128 characters.";
+  } 
 }
-  // let upperCase = prompt("Would you like upper case letters?")
 
-  // let special = prompt("Would you like special characters?")
- 
   
-
- 
-
-
 // Check password length
 function checkLength() {
   let passwordLength = prompt("Please enter password length between 8 and 128 characters.");
@@ -50,17 +29,66 @@ function checkLength() {
   } else if (passwordLength < 8 || passwordLength > 128) {
       console.log("Password must be between 8 and 128 characters.");
       return false;
-    } return true;
+  } return true;
 }
 
+// Numbers 
+  function checkNumbers() {
+    let numResponse = confirm("Would you like numbers?"); 
+      if (numResponse === true) {
+        console.log("Your password will have numbers.");
+        return true;
+    } else {
+        console.log("Your password will not have numbers.")
+        return false;
+     }
+   }
+  
+  // Upper Case
+  function checkUpper() {
+    let upperResponse = confirm("Would you like uppercase characters?"); 
+      if (upperResponse === true) {
+        console.log("Your password will have uppercase characters.");
+        return true;
+    } else {
+        console.log("Your password will not have uppercase characters.")
+        return false;
+     }
+   }
+  
+  // Lower case
+  function checkLower() {
+    let lowerResponse = confirm("Would you like lowercase characters?"); 
+      if (lowerResponse === true) {
+        console.log("Your password will have lowercase characters.");
+        return true;
+    } else {
+        console.log("Your password will not have lowercase characters.")
+        return false;
+     }
+   }
 
-if (checkLength()) {
-  let numbers = checkNumber();
-  let lowers = checkLower();
 
-//at the end you're going to use these to create the final return
-  // return password;
-}
+  // Special characters
+  function checkSpecial() {
+    let specialResponse = confirm("Would you like special characters?"); 
+      if (specialResponse === true) {
+        console.log("Your password will have special characters.");
+        return true;
+    } else {
+        console.log("Your password will not have special characters.")
+        return false;
+     }
+   }
+
+
+// if (checkLength()) {
+//   let numbers = checkNumber();
+//   let lowers = checkLower();
+
+// at the end you're going to use these to create the final return
+//    return password;
+// }
 
 
 
