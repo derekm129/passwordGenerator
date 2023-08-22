@@ -1,11 +1,12 @@
 // Assignment code here
 
 // Variables
+var numericalChar = "0123456789"
 var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
-var numericalChar = "0123456789";
 var specialChar =  "!#$%&()*+,-./:;<=>?@[\]^_{|}";
-let password = "";
+
+
 
 // Generate password
 function generatePassword() {
@@ -17,7 +18,17 @@ function generatePassword() {
   }else {
     return "Password must be between 8 and 128 characters.";
   } 
-}
+  let password = "";
+    
+    password += numericalChar[Math.floor(Math.random() * numericalChar.length)];
+    password += uppercaseChar[Math.floor(Math.random() * uppercaseChar.length)];
+    password += lowercaseChar[Math.floor(Math.random() * lowercaseChar.length)];
+    password += specialChar[Math.floor(Math.random() * specialChar.length)];
+    
+  console.log(password);
+
+  return password;
+} 
 
   
 // Check password length
@@ -42,7 +53,7 @@ function checkLength() {
         console.log("Your password will not have numbers.")
         return false;
      }
-   }
+   } 
   
   // Upper Case
   function checkUpper() {
@@ -82,9 +93,6 @@ function checkLength() {
    }
 
 
-// if (checkLength()) {
-//   let numbers = checkNumber();
-//   let lowers = checkLower();
 
 // at the end you're going to use these to create the final return
 //    return password;
