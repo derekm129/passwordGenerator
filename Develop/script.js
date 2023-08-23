@@ -7,10 +7,10 @@ var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
 var specialChar =  "!#$%&()*+,-./:;<=>?@[\]^_{|}";
 
 
-
 // Generate password
 function generatePassword() {
-  if (checkLength()) {
+  let passwordLength = getLength();
+  if (checkLength(passwordLength)) {
     let numbers = checkNumbers();
     let uppers = checkUpper();
     let lowers = checkLower();
@@ -19,21 +19,30 @@ function generatePassword() {
     return "Password must be between 8 and 128 characters.";
   } 
   let password = "";
-    
+  
+
     password += numericalChar[Math.floor(Math.random() * numericalChar.length)];
     password += uppercaseChar[Math.floor(Math.random() * uppercaseChar.length)];
     password += lowercaseChar[Math.floor(Math.random() * lowercaseChar.length)];
     password += specialChar[Math.floor(Math.random() * specialChar.length)];
     
-  console.log(password);
+    // string.concat(numbers, uppers, lowers, specials);
+
+   
+    console.log(password);
 
   return password;
 } 
 
+function getLength() {
+  let passwordLength = (prompt("Please enter password length between 8 and 128 characters."));
+  return passwordLength;
+}
   
 // Check password length
-function checkLength() {
-  let passwordLength = prompt("Please enter password length between 8 and 128 characters.");
+function checkLength(passwordLength) {
+  // let passwordLength = (prompt("Please enter password length between 8 and 128 characters."));
+  console.log(passwordLength);
     if (isNaN(passwordLength)) {
       console.log("That is not a number.");
       return false;
@@ -43,7 +52,7 @@ function checkLength() {
   } return true;
 }
 
-// Numbers 
+// Confirm Numbers 
   function checkNumbers() {
     let numResponse = confirm("Would you like numbers?"); 
       if (numResponse === true) {
@@ -55,7 +64,7 @@ function checkLength() {
      }
    } 
   
-  // Upper Case
+  // Confirm Upper Case
   function checkUpper() {
     let upperResponse = confirm("Would you like uppercase characters?"); 
       if (upperResponse === true) {
@@ -67,7 +76,7 @@ function checkLength() {
      }
    }
   
-  // Lower case
+  // Confirm Lower case
   function checkLower() {
     let lowerResponse = confirm("Would you like lowercase characters?"); 
       if (lowerResponse === true) {
@@ -80,7 +89,7 @@ function checkLength() {
    }
 
 
-  // Special characters
+  // Confirm Special characters
   function checkSpecial() {
     let specialResponse = confirm("Would you like special characters?"); 
       if (specialResponse === true) {
@@ -93,14 +102,6 @@ function checkLength() {
    }
 
 
-
-// at the end you're going to use these to create the final return
-//    return password;
-// }
-
-
-
-// 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
