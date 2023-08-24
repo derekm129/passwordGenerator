@@ -9,28 +9,46 @@ var specialChar =  "!#$%&()*+,-./:;<=>?@[\]^_{|}";
 
 // Generate password
 function generatePassword() {
-  let passwordLength = getLength();
-  if (checkLength(passwordLength)) {
-    let numbers = checkNumbers();
-    let uppers = checkUpper();
-    let lowers = checkLower();
-    let specials = checkSpecial();
+  let passWordLength = getLength();
+
+  let numbers = "";
+  let uppers = "";
+  let lowers = "";
+  let specials = "";
+
+  if (checkLength(passWordLength)) {
+     numbers = checkNumbers();
+     uppers = checkUpper();
+     lowers = checkLower();
+     specials = checkSpecial();
   }else {
     return "Password must be between 8 and 128 characters.";
   } 
-  let password = "";
   
+  //  Allowed characters
+  var allowedCharacters = "";
 
-    password += numericalChar[Math.floor(Math.random() * numericalChar.length)];
-    password += uppercaseChar[Math.floor(Math.random() * uppercaseChar.length)];
-    password += lowercaseChar[Math.floor(Math.random() * lowercaseChar.length)];
-    password += specialChar[Math.floor(Math.random() * specialChar.length)];
-    
-    // string.concat(numbers, uppers, lowers, specials);
+  if (numbers) {
+    allowedCharacters += numericalChar;
+  }
+  if (uppers) {
+    allowedCharacters += uppercaseChar;
+  }
+  if (lowers) {
+    allowedCharacters += lowercaseChar;
+  }
+  if (specials) {
+    allowedCharacters += specialChar;
+  }
 
-   
-    console.log(password);
+  console.log(allowedCharacters);
 
+  let password = "";
+  for (var i = 0;  i < passWordLength; i++) {
+    var random = Math.floor(Math.random() * allowedCharacters.length);
+    password += allowedCharacters[random]; 
+  }
+  console.log(password);
   return password;
 } 
 
