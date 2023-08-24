@@ -15,7 +15,7 @@ N/A
 
 This website generates random passwords based on user input.
 
-![Password Generator](./Assets/Images/screenshot.png)
+![Password Generator](./Develop/Assets/Images/screenshot.png.png)
 
 ## Credits
 
