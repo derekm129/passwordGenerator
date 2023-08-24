@@ -17,6 +17,8 @@ This website generates random passwords based on user input.
 
 ![Password Generator](./Assets/Images/screenshot.png)
 
+https://derekm129.github.io/passwordGenerator/
+
 ## Credits
 
 N/A
